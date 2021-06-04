@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: micrometer-demo
+  namespace: default
+spec:
+  endpoints:
+    - interval: 15s
+      path: /actuator/prometheus
+      port: metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      micrometer-prometheus-discovery: 'true'

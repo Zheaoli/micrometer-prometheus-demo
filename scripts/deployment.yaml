@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micrometer-prometheus
+  namespace: default
+  labels:
+    app: demo-prometheus
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-prometheus
+  template:
+    metadata:
+      labels:
+        app: demo-prometheus
+    spec:
+      containers:
+        - name: micrometer-prometheus
+          image: manjusakalza/micrometer-prometheus:latest
+          ports:
+            - containerPort: 8080
