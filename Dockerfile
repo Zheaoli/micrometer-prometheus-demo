@@ -1,8 +1,7 @@
 FROM maven:3.6.0-jdk-8-slim AS build
-COPY settings.xml /usr/share/maven/ref/
 COPY micrometer /home/app/micrometer
 COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml -s /usr/share/maven/ref/settings.xml clean package
+RUN mvn -f /home/app/pom.xml clean package
 
 
 
